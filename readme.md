@@ -189,12 +189,9 @@ If you'd like to improve MovieMiner:
 
 ---
 
-# 📜 License
-
-This project is licensed under the MIT License.
 
 ---
 
 # 👨‍💻 Author
 
-Developed by [Lakshya Wardhanshingh Rathore]
+Developed by [Lakshyawardhan Singh Rathore]
