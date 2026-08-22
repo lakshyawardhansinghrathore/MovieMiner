@@ -206,11 +206,3 @@ If you'd like to improve MovieMiner:
 
 ---
 
-# 👨‍💻 Author
-
-<<<<<<< HEAD
-Developed by [Lakshya Wardhanshingh Rathore]
-
-=======
-Developed by [Lakshyawardhan Singh Rathore]
->>>>>>> 5596101d314487cd9914b2eff696e69dfcd17761
