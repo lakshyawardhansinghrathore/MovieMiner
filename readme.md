@@ -7,7 +7,7 @@
 
 So, **MovieMiner** means:
 
-> *“An AI-powered tool that mines and extracts structured movie information from unstructured text.”*
+> *“An AI-powered tool that mines and generates structured movie information directly from a movie name.”*
 
 🌐 **Live Demo:**
 
@@ -19,31 +19,30 @@ https://movieminer-ud6qc38f76463uj5btlyci.streamlit.app/
 
 # 🚀 About the Project
 
-MovieMiner is an AI-powered movie information extraction application built using **LangChain**, **Mistral AI**, **Pydantic**, and **Streamlit**.
+MovieMiner is an AI-powered movie information generator application built using **LangChain**, **Mistral AI**, **Pydantic**, and **Streamlit**.
 
-The application takes a paragraph describing a movie and automatically converts it into structured data such as:
+Simply type in the name of any movie, and the application instantly mines and generates comprehensive, structured data including:
 
-* Movie Title
-* Release Year
-* Genre
-* Director
-* Cast
-* Rating
-* Summary
+* 🎬 Movie Title
+* 📅 Release Year
+* 🎭 Genre(s)
+* 🎬 Director(s)
+* 👥 Main Cast
+* ⭐ Rating (out of 10)
+* 📝 Plot Summary
 
-This project demonstrates the power of **LLMs + Structured Output Parsing** for real-world NLP applications.
+This project demonstrates the power of **LLMs + Structured Output Parsing** for real-world NLP and cinema data applications.
 
 ---
 
 # ✨ Features
 
-* 🎥 Extract movie details from plain English text
-* 🤖 AI-powered information extraction using Mistral AI
-* 📦 Structured output with Pydantic validation
-* 🎨 Interactive Streamlit UI
-* 📄 JSON formatted output
-* ⬇ Download extracted data as JSON
-* ⚡ Fast and lightweight application
+* 🔍 **Instant Movie Mining**: Just type the movie name to retrieve detailed metadata.
+* 🤖 **AI-Powered Knowledge Extraction**: Uses Mistral AI (`mistral-small-2506`) to pull complete movie details.
+* 📦 **Strict Schema Validation**: Uses Pydantic & LangChain output parser to guarantee structured data format.
+* 🎨 **Modern Streamlit UI**: Dark mode, metric cards, genre badges, and responsive layout.
+* 📄 **Structured JSON**: Formatted JSON viewer with 1-click download.
+* ⚡ **Fast & Lightweight**: Minimal overhead and rapid response times.
 
 ---
 
@@ -64,7 +63,7 @@ This project demonstrates the power of **LLMs + Structured Output Parsing** for 
 MovieMiner/
 │
 ├── app.py               # Streamlit UI
-├── movieminer.py        # Core extraction logic
+├── movieminer.py        # Core generation logic
 ├── requirements.txt     # Dependencies
 ├── .gitignore
 └── README.md
@@ -125,19 +124,25 @@ MISTRAL_API_KEY=your_api_key_here
 
 # ▶ Running the Application
 
+### Streamlit Web App:
 ```bash id="yr03df"
 streamlit run app.py
+```
+
+### CLI / Script Mode:
+```bash
+python movieminer.py
 ```
 
 ---
 
 # 🧠 How It Works
 
-1. User enters a movie paragraph
-2. LangChain sends the prompt to Mistral AI
-3. The LLM extracts movie details
-4. Pydantic validates the structured response
-5. Streamlit displays the formatted output
+1. User enters any movie name (e.g. `Inception`, `Interstellar`, `RRR`)
+2. LangChain constructs a structured prompt for Mistral AI
+3. The LLM generates the factual movie metadata based on world cinema knowledge
+4. Pydantic validates and parses the output into a typed schema
+5. Streamlit renders metric cards, badges, plot summary, and downloadable JSON
 
 ---
 
@@ -146,7 +151,7 @@ streamlit run app.py
 ## Input
 
 ```text id="t56v8r"
-Inception is a 2010 science fiction film directed by Christopher Nolan and starring Leonardo DiCaprio. The movie follows a skilled thief who enters people's dreams to steal secrets.
+Inception
 ```
 
 ## Output
@@ -155,11 +160,21 @@ Inception is a 2010 science fiction film directed by Christopher Nolan and starr
 {
   "title": "Inception",
   "release_year": 2010,
-  "genre": ["Science Fiction"],
+  "genre": [
+    "Action",
+    "Adventure",
+    "Sci-Fi"
+  ],
   "director": "Christopher Nolan",
-  "cast": ["Leonardo DiCaprio"],
-  "rating": null,
-  "summary": "A skilled thief enters dreams to steal secrets."
+  "cast": [
+    "Leonardo DiCaprio",
+    "Joseph Gordon-Levitt",
+    "Elliot Page",
+    "Tom Hardy",
+    "Ken Watanabe"
+  ],
+  "rating": 8.8,
+  "summary": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O."
 }
 ```
 
@@ -167,11 +182,10 @@ Inception is a 2010 science fiction film directed by Christopher Nolan and starr
 
 # 🔮 Future Improvements
 
-* 🎭 Multiple movie extraction support
-* 🌐 TMDB/IMDb API integration
+* 🎭 Multiple movie comparison support
+* 🌐 TMDB/IMDb API live data enrichment & poster fetching
 * 📊 Export to CSV/PDF
-* 🎨 Better UI animations
-* 🧠 Improved genre classification
+* 🎨 Streaming responses & poster galleries
 * ☁ Deploy with Docker & CI/CD
 
 ---
@@ -198,3 +212,4 @@ This project is licensed under the MIT License.
 # 👨‍💻 Author
 
 Developed by [Lakshya Wardhanshingh Rathore]
+
