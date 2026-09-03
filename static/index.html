@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieMiner 🎬 | AI Powered Movie Details</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+
+    <main class="container">
+        <!-- Header -->
+        <header>
+            <h1 class="logo">
+                <i data-lucide="clapperboard" class="icon-lg text-primary"></i>
+                MovieMiner
+            </h1>
+            <p class="subtitle">Enter any movie name to generate complete structured AI-powered movie data.</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <form id="search-form" class="search-box">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="movie-input" placeholder="Example: Inception, Interstellar, The Dark Knight..." autocomplete="off">
+                <button type="submit" id="search-btn">
+                    <span>Mine Details</span>
+                    <i data-lucide="rocket"></i>
+                </button>
+            </form>
+            <div class="quick-tags">
+                <span>Try:</span>
+                <button class="tag" type="button">Inception</button>
+                <button class="tag" type="button">Interstellar</button>
+                <button class="tag" type="button">Spirited Away</button>
+                <button class="tag" type="button">RRR</button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <p>Mining AI database for cinematic details...</p>
+        </div>
+
+        <!-- Result Container -->
+        <section id="result-container" class="result-container hidden">
+            <div class="card glass">
+                
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <i data-lucide="clapperboard" class="metric-icon"></i>
+                        <span class="metric-label">Title</span>
+                        <strong class="metric-value" id="res-title">-</strong>
+                    </div>
+                    <div class="metric-box">
+                        <i data-lucide="calendar" class="metric-icon"></i>
+                        <span class="metric-label">Release Year</span>
+                        <strong class="metric-value" id="res-year">-</strong>
+                    </div>
+                    <div class="metric-box">
+                        <i data-lucide="star" class="metric-icon text-accent"></i>
+                        <span class="metric-label">Rating</span>
+                        <strong class="metric-value" id="res-rating">-</strong>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="details-grid">
+                    <!-- Director & Genres -->
+                    <div class="detail-section">
+                        <h3><i data-lucide="video"></i> Director</h3>
+                        <p id="res-director" class="text-light">-</p>
+
+                        <h3 class="mt-4"><i data-lucide="tags"></i> Genres</h3>
+                        <div id="res-genres" class="badge-container">
+                            <!-- Badges injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Cast -->
+                    <div class="detail-section">
+                        <h3><i class="icon" data-lucide="users"></i> Main Cast</h3>
+                        <ul id="res-cast" class="cast-list">
+                            <!-- Cast list injected by JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="summary-box mt-4">
+                    <h3><i data-lucide="align-left"></i> Summary</h3>
+                    <p id="res-summary">-</p>
+                </div>
+            </div>
+
+            <!-- JSON Output Section -->
+            <div class="card glass mt-4">
+                <div class="json-header">
+                    <h3><i data-lucide="code-2"></i> Structured JSON</h3>
+                    <div class="json-actions">
+                        <button id="copy-json-btn" class="btn-icon" title="Copy to clipboard">
+                            <i data-lucide="copy"></i> Copy
+                        </button>
+                        <button id="download-json-btn" class="btn-icon btn-primary" title="Download JSON">
+                            <i data-lucide="download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                <pre class="json-viewer"><code id="res-json"></code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <i data-lucide="check-circle" id="toast-icon"></i>
+        <span id="toast-msg">Copied to clipboard!</span>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
